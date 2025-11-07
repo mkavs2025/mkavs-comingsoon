@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "index.html": {
-      "memory": 128
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
@@ -26,12 +21,6 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
     }
   ]
 }
