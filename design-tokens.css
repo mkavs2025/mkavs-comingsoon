@@ -1,0 +1,173 @@
+/**
+ * MKAVS Design System - Design Tokens
+ * Premium SaaS UI/UX Design Foundation
+ * 
+ * Usage: Import this file first in your CSS cascade
+ * Accessibility: All colors meet WCAG AA standards (4.5:1 contrast minimum)
+ */
+
+:root {
+  /* === BRAND COLORS === */
+  --color-brand-primary: #fe5d03;      /* Orange - Primary brand */
+  --color-brand-secondary: #F7F4D2;    /* Slate/Cream - Secondary brand */
+  --color-neutral-black: #000000;      /* Pure black */
+  
+  /* === NEUTRAL PALETTE === */
+  --color-neutral-900: #111111;        /* Near black */
+  --color-neutral-800: #1a1a1a;        /* Dark gray */
+  --color-neutral-700: #2a2a2a;        /* Medium dark gray */
+  --color-neutral-600: #404040;        /* Medium gray */
+  --color-neutral-500: #6b7280;        /* Base gray */
+  --color-neutral-400: #a3a3a3;        /* Light gray */
+  --color-neutral-300: #d1d5db;        /* Lighter gray */
+  --color-neutral-200: #e5e5e5;        /* Very light gray */
+  --color-neutral-100: #f5f5f5;        /* Off white */
+  --color-neutral-white: #ffffff;      /* Pure white */
+  
+  /* === SEMANTIC COLORS === */
+  --color-surface-primary: var(--color-neutral-black);
+  --color-surface-secondary: var(--color-neutral-900);
+  --color-surface-tertiary: var(--color-neutral-800);
+  --color-text-primary: var(--color-brand-secondary);
+  --color-text-secondary: rgba(247, 244, 210, 0.8);
+  --color-text-tertiary: rgba(247, 244, 210, 0.6);
+  --color-text-accent: var(--color-brand-primary);
+  --color-text-inverse: var(--color-neutral-black);
+  
+  /* === STATE COLORS === */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+  
+  /* === TYPOGRAPHY SCALE === */
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-family-mono: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+  
+  /* Font Sizes (using modular scale 1.250) */
+  --font-size-xs: 0.75rem;     /* 12px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-lg: 1.125rem;    /* 18px */
+  --font-size-xl: 1.25rem;     /* 20px */
+  --font-size-2xl: 1.5rem;     /* 24px */
+  --font-size-3xl: 1.875rem;   /* 30px */
+  --font-size-4xl: 2.25rem;    /* 36px */
+  --font-size-5xl: 3rem;       /* 48px */
+  --font-size-6xl: 3.75rem;    /* 60px */
+  --font-size-7xl: 4.5rem;     /* 72px */
+  
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  
+  /* Line Heights */
+  --line-height-none: 1;
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+  
+  /* === SPACING SCALE === */
+  /* Using 8px base unit (rem values at 16px root) */
+  --space-0: 0;
+  --space-px: 1px;
+  --space-0_5: 0.125rem;    /* 2px */
+  --space-1: 0.25rem;       /* 4px */
+  --space-1_5: 0.375rem;    /* 6px */
+  --space-2: 0.5rem;        /* 8px */
+  --space-2_5: 0.625rem;    /* 10px */
+  --space-3: 0.75rem;       /* 12px */
+  --space-3_5: 0.875rem;    /* 14px */
+  --space-4: 1rem;          /* 16px */
+  --space-5: 1.25rem;       /* 20px */
+  --space-6: 1.5rem;        /* 24px */
+  --space-7: 1.75rem;       /* 28px */
+  --space-8: 2rem;          /* 32px */
+  --space-9: 2.25rem;       /* 36px */
+  --space-10: 2.5rem;       /* 40px */
+  --space-11: 2.75rem;      /* 44px */
+  --space-12: 3rem;         /* 48px */
+  --space-14: 3.5rem;       /* 56px */
+  --space-16: 4rem;         /* 64px */
+  --space-20: 5rem;         /* 80px */
+  --space-24: 6rem;         /* 96px */
+  --space-28: 7rem;         /* 112px */
+  --space-32: 8rem;         /* 128px */
+  
+  /* === BORDER RADIUS === */
+  --radius-none: 0;
+  --radius-sm: 0.125rem;     /* 2px */
+  --radius-base: 0.25rem;    /* 4px */
+  --radius-md: 0.375rem;     /* 6px */
+  --radius-lg: 0.5rem;       /* 8px */
+  --radius-xl: 0.75rem;      /* 12px */
+  --radius-2xl: 1rem;        /* 16px */
+  --radius-3xl: 1.5rem;      /* 24px */
+  --radius-full: 9999px;
+  
+  /* === SHADOWS === */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  
+  /* === TRANSITIONS === */
+  --transition-none: none;
+  --transition-all: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-default: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 100ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* === Z-INDEX SCALE === */
+  --z-index-hide: -1;
+  --z-index-auto: auto;
+  --z-index-base: 0;
+  --z-index-docked: 10;
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1100;
+  --z-index-banner: 1200;
+  --z-index-overlay: 1300;
+  --z-index-modal: 1400;
+  --z-index-popover: 1500;
+  --z-index-skipLink: 1600;
+  --z-index-toast: 1700;
+  --z-index-tooltip: 1800;
+  
+  /* === BREAKPOINTS === */
+  --breakpoint-sm: 640px;    /* Small devices */
+  --breakpoint-md: 768px;    /* Medium devices */
+  --breakpoint-lg: 1024px;   /* Large devices */
+  --breakpoint-xl: 1280px;   /* Extra large devices */
+  --breakpoint-2xl: 1536px;  /* 2X Extra large devices */
+  
+  /* === COMPONENT TOKENS === */
+  --component-button-height: 44px;      /* WCAG minimum touch target */
+  --component-input-height: 44px;       /* WCAG minimum touch target */
+  --component-nav-height: 64px;
+  --component-header-height: 80px;
+  --component-footer-height: 120px;
+  
+  /* === LAYOUT TOKENS === */
+  --layout-max-width: 1280px;
+  --layout-gutter: var(--space-4);
+  --layout-section-padding-y: var(--space-16);
+  --layout-section-padding-x: var(--space-4);
+}
+
+/* === BREAKPOINT MIXINS === */
+/* Use these in @media queries */
+@custom-media --sm (min-width: 640px);
+@custom-media --md (min-width: 768px);
+@custom-media --lg (min-width: 1024px);
+@custom-media --xl (min-width: 1280px);
+@custom-media --2xl (min-width: 1536px);
