@@ -3,160 +3,133 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MKAVS</title>
-  <meta name="description" content="MKAVS - Premium solutions">
-  
-  <!-- Favicon - Using actual logo -->
+  <title>mKavs — Coming Soon</title>
+  <meta name="description" content="mKavs — Coming Soon">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="logo.png">
-  <link rel="apple-touch-icon" href="logo.png">
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  
+
+  <!-- Local Cyberpunk font for mobile 'COMING SOON' -->
   <style>
-    /* Minimal Design Tokens */
-    :root {
-      /* Core Colors */
-      --color-primary: #fe5d03;
-      --color-secondary: #F7F4D2; 
-      --color-black: #000000;
-      --color-white: #ffffff;
-      --color-gray: rgba(255, 255, 255, 0.6);
-      
-      /* Typography */
-      --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-light: 300;
-      --font-normal: 400;
-      --font-medium: 500;
-      
-      /* Spacing */
-      --space-xs: 0.5rem;
-      --space-sm: 1rem;
-      --space-md: 1.5rem;
-      --space-lg: 2rem;
-      --space-xl: 3rem;
+    @font-face{
+      font-family: 'CyberpunkLocal';
+      src: url('Cyberpunk-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
     }
-    
-    /* Reset & Base */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+  </style>
+
+  <style>
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      background: url('BACKGROUND.PNG') center center / cover no-repeat fixed, #000; /* desktop default */
     }
-    
-    html {
-      font-size: 16px;
+
+    /* Container centered for mobile-first layout */
+    .center-stack{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:1.25rem;
+      padding: 2rem 1rem;
+      text-align:center;
     }
-    
-    body {
-      font-family: var(--font-primary);
-      background: var(--color-black);
-      color: var(--color-white);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
+
+    h1.brand{
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight:700;
+      font-size:2rem;
+      color:#fff;
+      margin:0;
     }
-    
-    /* Main Container */
-    .container {
-      text-align: center;
-      padding: var(--space-md);
-      max-width: 480px;
+
+    img.logo{ width:96px; height:auto; border-radius:12px; box-shadow: 0 8px 30px rgba(0,0,0,0.6); }
+
+    /* Coming Soon default (desktop uses smaller size) */
+    .coming{
+      font-family: Inter, system-ui, sans-serif;
+      color: rgba(255,255,255,0.8);
+      font-size:1rem;
+      margin-top:0.25rem;
+      letter-spacing:0.04em;
     }
-    
-    /* Logo */
-    .logo {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto var(--space-md);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(254, 93, 3, 0.15);
+
+    /* Top Instagram for mobile (hidden on desktop) */
+    .insta-top{ position: absolute; top:18px; left:50%; transform:translateX(-50%); z-index:2000 }
+    .insta-top img{ width:28px; height:28px }
+
+    /* Bottom-right Instagram CTA for desktop only */
+    .insta-bottom{
+      position:fixed; right:20px; bottom:20px; z-index:2200;
+      width:56px; height:56px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;
+      background: linear-gradient(135deg,#f58529,#dd2a7b 35%,#8134af 65%,#515bd4);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.45);
     }
-    
-    .logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    /* Typography */
-    .title {
-      font-size: 2.5rem;
-      font-weight: var(--font-light);
-      letter-spacing: -0.02em;
-      margin-bottom: var(--space-sm);
-      color: var(--color-white);
-    }
-    
-    .subtitle {
-      font-size: 1rem;
-      font-weight: var(--font-normal);
-      color: var(--color-gray);
-      line-height: 1.5;
-      max-width: 320px;
-      margin: 0 auto;
-    }
-    
-    /* Responsive */
-    @media (max-width: 639px) {
-      .logo {
-        width: 56px;
-        height: 56px;
+    .insta-bottom img{ width:24px; height:24px }
+
+    /* MOBILE-ONLY STYLES */
+    @media (max-width:640px){
+      /* black background on mobile */
+      body{ background: #000 }
+
+      /* center stack (mobile) */
+      .center-stack{ padding-top: 3.5rem }
+
+      /* Use Cyberpunk font for the big 'COMING SOON' line */
+      .coming{
+        font-family: 'CyberpunkLocal', Inter, sans-serif;
+        font-size: 3.2rem; /* large on mobile */
+        color: #fff;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-top: 0.5rem;
       }
-      
-      .title {
-        font-size: 2rem;
-      }
-      
-      .subtitle {
-        font-size: 0.9rem;
-      }
+
+      /* show top insta, hide bottom */
+      .insta-top{ display:inline-block }
+      .insta-bottom{ display:none }
     }
-    
-    @media (min-width: 1024px) {
-      .logo {
-        width: 72px;
-        height: 72px;
-      }
-      
-      .title {
-        font-size: 3rem;
-      }
-      
-      .subtitle {
-        font-size: 1.1rem;
-      }
+
+    /* DESKTOP: keep existing look (background image) and smaller coming text */
+    @media (min-width:641px){
+      /* Hide centered stack on desktop: only background + bottom-right insta should remain */
+      .center-stack{ display:none }
+      .coming{ font-size:1rem }
+      .insta-top{ display:none }
+      .insta-bottom{ display:inline-flex }
     }
-    
-    /* Accessibility */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
-    
-    /* Focus management */
-    :focus-visible {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-    }
+
+    @media (prefers-reduced-motion: reduce){ *{transition:none!important} }
   </style>
 </head>
 <body>
-  <main class="container" role="main">
-    <div class="logo">
-      <img src="logo.png" alt="MKAVS Logo" width="64" height="64">
-    </div>
-    
-    <h1 class="title">MKAVS</h1>
-    <p class="subtitle">Coming soon</p>
+  <!-- Mobile top Instagram icon (centered at top) -->
+  <a class="insta-top" href="https://www.instagram.com/the.mkavs/" target="_blank" rel="noopener noreferrer" aria-label="mKavs on Instagram">
+    <img src="instalogo.png" alt="Instagram" />
+  </a>
+
+  <main class="center-stack" role="main">
+    <h1 class="brand">mKavs</h1>
+    <img src="logo.png" alt="mKavs logo" class="logo" />
+    <div class="coming">COMING SOON</div>
   </main>
+
+  <!-- Desktop bottom-right CTA (kept for desktop) -->
+  <a class="insta-bottom" href="https://www.instagram.com/the.mkavs/" target="_blank" rel="noopener noreferrer" aria-label="Follow mKavs on Instagram">
+    <img src="instalogo.png" alt="Instagram" />
+  </a>
+
 </body>
 </html>

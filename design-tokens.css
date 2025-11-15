@@ -164,10 +164,5 @@
   --layout-section-padding-x: var(--space-4);
 }
 
-/* === BREAKPOINT MIXINS === */
-/* Use these in @media queries */
-@custom-media --sm (min-width: 640px);
-@custom-media --md (min-width: 768px);
-@custom-media --lg (min-width: 1024px);
-@custom-media --xl (min-width: 1280px);
-@custom-media --2xl (min-width: 1536px);
+/* === BREAKPOINT REFERENCE === */
+/* Use the CSS custom properties above in your @media queries like: @media (min-width: var(--breakpoint-md)) */
