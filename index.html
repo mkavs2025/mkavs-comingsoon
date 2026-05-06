@@ -131,15 +131,11 @@
         }
 
         /* Typography */
-        .brand-name {
-            color: #00f5a0;
-            font-weight: 800;
-            letter-spacing: 12px;
-            text-transform: uppercase;
-            font-size: 1rem;
+        .brand-logo {
+            height: 24px;
+            width: auto;
             margin-bottom: 24px;
-            text-shadow: 0 0 10px rgba(0, 245, 160, 0.3);
-            margin-right: -12px; /* Offset the letter spacing */
+            filter: drop-shadow(0 0 10px rgba(0, 245, 160, 0.3));
         }
 
         .headline {
@@ -150,8 +146,12 @@
             color: #ffffff;
         }
 
-        .headline strong {
-            font-weight: 900;
+        .headline-logo {
+            height: 72px;
+            width: auto;
+            margin-top: 16px;
+            display: inline-block;
+            vertical-align: middle;
         }
 
         .tagline {
@@ -333,7 +333,8 @@
             .hello-text { font-size: 48px; }
             .headline { font-size: 2.5rem; }
             .tagline { font-size: 1.2rem; }
-            .brand-name { letter-spacing: 8px; margin-right: -8px; }
+            .brand-logo { height: 20px; }
+            .headline-logo { height: 48px; }
             .bokeh-1 { width: 300px; height: 300px; filter: blur(60px); }
             .bokeh-2 { width: 300px; height: 300px; filter: blur(60px); }
             .bokeh-3 { width: 200px; height: 200px; filter: blur(50px); }
@@ -350,7 +351,8 @@
             .hello-text { font-size: 36px; }
             .headline { font-size: 2rem; }
             .tagline { font-size: 1rem; }
-            .brand-name { letter-spacing: 6px; font-size: 0.9rem; margin-right: -6px; }
+            .brand-logo { height: 16px; }
+            .headline-logo { height: 36px; }
             .badge-inner { padding: 10px 24px; }
             .badge-text { font-size: 0.85rem; }
 
@@ -381,8 +383,8 @@
         <div class="bokeh bokeh-3"></div>
 
         <div class="center-content">
-            <div class="brand-name">MKAVS</div>
-            <h1 class="headline">Thank You for Visiting<br><strong>MKAVS</strong></h1>
+            <img src="logo.png" alt="MKAVS" class="brand-logo">
+            <h1 class="headline">Thank You for Visiting<br><img src="logo.png" alt="MKAVS" class="headline-logo"></h1>
             <div class="tagline">We Build Your Digital Superhero</div>
 
             <div class="social-proof">
