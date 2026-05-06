@@ -1,12 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>mKavs — Moved</title>
-    <meta http-equiv="refresh" content="0; url=./index.html" />
-  </head>
-  <body>
-    <p>If you are not redirected automatically, <a href="./index.html">click here to open the site</a>.</p>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MKAVS - Coming Soon</title>
+    <!-- Preconnect to Google Fonts for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* CSS reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0a0f1e;
+            color: white;
+        }
+
+        /* Stage 1: Loader */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0a0f1e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+        }
+
+        .hello-text {
+            font-size: 64px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 20px #00e5ff;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .hello-text.visible {
+            opacity: 1;
+        }
+
+        /* Stage 2: Main Content */
+        #main-content {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background: radial-gradient(circle at center, rgba(0, 229, 255, 0.05) 0%, #0a0f1e 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+            text-align: center;
+            padding: 40px 20px;
+            overflow: hidden;
+        }
+
+        #main-content.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Bokeh Orbs */
+        .bokeh {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.12;
+            z-index: -1;
+            animation: float 20s infinite alternate;
+        }
+
+        .bokeh-1 {
+            width: 400px;
+            height: 400px;
+            background: #00e5ff;
+            top: -100px;
+            left: -100px;
+        }
+
+        .bokeh-2 {
+            width: 500px;
+            height: 500px;
+            background: #b000ff;
+            bottom: -150px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        .bokeh-3 {
+            width: 300px;
+            height: 300px;
+            background: #00e5ff;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, 30px) scale(1.1); }
+            100% { transform: translate(-30px, -50px) scale(0.9); }
+        }
+
+        /* Content Layout */
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            z-index: 2;
+        }
+
+        /* Typography */
+        .brand-name {
+            color: #00e5ff;
+            font-weight: 800;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            font-size: 1rem;
+            margin-bottom: 24px;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+            margin-right: -12px; /* Offset the letter spacing */
+        }
+
+        .headline {
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            font-weight: 300;
+            color: white;
+        }
+
+        .headline strong {
+            font-weight: 900;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 32px;
+            background: linear-gradient(90deg, #00e5ff, #b000ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 500;
+        }
+
+        /* Social Proof Section */
+        .social-proof {
+            margin-bottom: 48px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stats-container {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 16px;
+        }
+
+        .stat-card {
+            background-color: rgba(17, 24, 39, 0.4);
+            border: 1px solid rgba(0, 229, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px 32px;
+            min-width: 140px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #00e5ff;
+            line-height: 1;
+            margin-bottom: 8px;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #a1a1aa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .social-proof-text {
+            font-size: 0.95rem;
+            font-style: italic;
+            color: #a1a1aa;
+            max-width: 400px;
+            line-height: 1.4;
+        }
+
+        /* Countdown Section */
+        .countdown-container {
+            display: flex;
+            gap: 16px;
+            margin-top: 48px;
+        }
+
+        .countdown-box {
+            background-color: #111827;
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            min-width: 100px;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .count-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .count-label {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        /* Coming Soon Badge */
+        .badge-wrapper {
+            position: relative;
+            padding: 2px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #00e5ff, #b000ff, #00e5ff);
+            background-size: 200% auto;
+            animation: pulse-border 3s linear infinite;
+        }
+
+        .badge-inner {
+            background-color: #0a0f1e;
+            padding: 12px 32px;
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .badge-text {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Shimmer effect inside badge */
+        .badge-inner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: skewX(-20deg);
+            animation: sweep 3s infinite;
+            z-index: 1;
+        }
+
+        @keyframes pulse-border {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes sweep {
+            0% { left: -100%; }
+            50% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        /* Footer */
+        .footer {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            color: #8892b0;
+            font-size: 0.95rem;
+            margin-top: 40px;
+            z-index: 2;
+        }
+
+        .footer a {
+            color: #00e5ff;
+            text-decoration: none;
+            transition: text-shadow 0.3s;
+            font-weight: 500;
+        }
+
+        .footer a:hover {
+            text-shadow: 0 0 8px #00e5ff;
+        }
+
+        .copyright {
+            opacity: 0.5;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hello-text { font-size: 48px; }
+            .headline { font-size: 2.5rem; }
+            .tagline { font-size: 1.2rem; }
+            .brand-name { letter-spacing: 8px; margin-right: -8px; }
+            .bokeh-1 { width: 300px; height: 300px; filter: blur(60px); }
+            .bokeh-2 { width: 300px; height: 300px; filter: blur(60px); }
+            .bokeh-3 { width: 200px; height: 200px; filter: blur(50px); }
+
+            .stats-container { gap: 16px; }
+            .stat-card { padding: 12px 20px; min-width: 120px; }
+            .stat-number { font-size: 2rem; }
+            .countdown-container { gap: 12px; }
+            .countdown-box { min-width: 80px; padding: 16px; }
+            .count-number { font-size: 2rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .hello-text { font-size: 36px; }
+            .headline { font-size: 2rem; }
+            .tagline { font-size: 1rem; }
+            .brand-name { letter-spacing: 6px; font-size: 0.9rem; margin-right: -6px; }
+            .badge-inner { padding: 10px 24px; }
+            .badge-text { font-size: 0.85rem; }
+
+            .stats-container { gap: 12px; }
+            .stat-card { padding: 10px 16px; min-width: 100px; }
+            .stat-number { font-size: 1.75rem; }
+            .social-proof-text { font-size: 0.85rem; }
+
+            .countdown-container { flex-wrap: wrap; justify-content: center; gap: 10px; }
+            .countdown-box { min-width: 70px; padding: 12px; }
+            .count-number { font-size: 1.5rem; }
+            .count-label { font-size: 0.65rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Stage 1: Loading Screen -->
+    <div id="loader">
+        <div class="hello-text" id="hello-text">Hello</div>
+    </div>
+
+    <!-- Stage 2: Coming Soon Page -->
+    <div id="main-content">
+        <!-- Blurred Bokeh Orbs -->
+        <div class="bokeh bokeh-1"></div>
+        <div class="bokeh bokeh-2"></div>
+        <div class="bokeh bokeh-3"></div>
+
+        <div class="center-content">
+            <div class="brand-name">MKAVS</div>
+            <h1 class="headline">Thank You for Visiting<br><strong>MKAVS</strong></h1>
+            <div class="tagline">We Build Your Digital Superhero</div>
+
+            <div class="social-proof">
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number">75+</div>
+                        <div class="stat-label">Clients</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                </div>
+                <div class="social-proof-text">From freelancers to a full-fledged digital platform — the next chapter begins.</div>
+            </div>
+
+            <div class="badge-wrapper">
+                <div class="badge-inner">
+                    <span class="badge-text">COMING SOON</span>
+                </div>
+            </div>
+
+            <div class="countdown-container">
+                <div class="countdown-box">
+                    <div class="count-number" id="cd-days">00</div>
+                    <div class="count-label">DAYS</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="count-number" id="cd-hours">00</div>
+                    <div class="count-label">HOURS</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="count-number" id="cd-minutes">00</div>
+                    <div class="count-label">MINUTES</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="count-number" id="cd-seconds">00</div>
+                    <div class="count-label">SECONDS</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Have any queries? Reach us at <a href="mailto:support@mkavs.com">support@mkavs.com</a></p>
+            <p class="copyright">&copy; 2026 MKAVS. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Stage 1: Language Cycling Logic
+        const languages = [
+            "Hello", "Hola", "Bonjour", "Ciao", "Hallo", 
+            "नमस्ते", "வணக்கம்", "こんにちは", "안녕하세요", 
+            "مرحبا", "Olá", "Привет", "Salam", "Merhaba", "你好"
+        ];
+
+        const helloElement = document.getElementById('hello-text');
+        const loader = document.getElementById('loader');
+        const mainContent = document.getElementById('main-content');
+        
+        let currentIndex = 0;
+        
+        function cycleLanguages() {
+            if (currentIndex >= languages.length) {
+                // All languages shown, transition to Stage 2
+                setTimeout(() => {
+                    loader.style.opacity = '0';
+                    loader.style.visibility = 'hidden';
+                    
+                    // Fade in main page shortly after loader starts fading out
+                    setTimeout(() => {
+                        mainContent.classList.add('visible');
+                    }, 500); 
+                }, 300); // Small pause before fading loader
+                return;
+            }
+
+            // Set text and fade in
+            helloElement.textContent = languages[currentIndex];
+            helloElement.classList.add('visible');
+
+            // Wait, then fade out
+            setTimeout(() => {
+                helloElement.classList.remove('visible');
+                currentIndex++;
+                
+                // Wait for fade out to complete before showing next word
+                setTimeout(cycleLanguages, 300); 
+            }, 600); // Display duration for each word
+        }
+
+        // Initialize cycle after a short delay so the first word fades in smoothly
+        setTimeout(cycleLanguages, 200);
+
+        // Stage 2: Countdown Timer Logic
+        // Target: 25th May 2026 00:00:00 IST (UTC+5:30)
+        // Which is 24th May 2026 18:30:00 UTC
+        const targetDate = new Date('2026-05-24T18:30:00Z').getTime();
+
+        const cdDays = document.getElementById('cd-days');
+        const cdHours = document.getElementById('cd-hours');
+        const cdMinutes = document.getElementById('cd-minutes');
+        const cdSeconds = document.getElementById('cd-seconds');
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                cdDays.textContent = '00';
+                cdHours.textContent = '00';
+                cdMinutes.textContent = '00';
+                cdSeconds.textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            cdDays.textContent = days.toString().padStart(2, '0');
+            cdHours.textContent = hours.toString().padStart(2, '0');
+            cdMinutes.textContent = minutes.toString().padStart(2, '0');
+            cdSeconds.textContent = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+    </script>
+</body>
 </html>
