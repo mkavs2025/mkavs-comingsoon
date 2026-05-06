@@ -43,13 +43,48 @@
             transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
         }
 
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            margin-top: -10vh;
+        }
+
         .hello-text {
             font-size: 64px;
             font-weight: bold;
             color: #ffffff;
             text-shadow: 0 0 20px #00f5a0;
             opacity: 0;
-            transition: opacity 0.4s ease-in-out;
+            transition: opacity 0.1s ease-in-out;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .progress-bar-container {
+            width: 250px;
+            height: 4px;
+            background-color: #1a1a1a;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #00f5a0, #00b4d8);
+            border-radius: 4px;
+        }
+
+        .progress-text {
+            font-size: 0.85rem;
+            color: #a1a1aa;
+            font-weight: 500;
+            letter-spacing: 2px;
         }
 
         .hello-text.visible {
@@ -490,7 +525,13 @@
 
     <!-- Stage 1: Loading Screen -->
     <div id="loader">
-        <div class="hello-text" id="hello-text">Hello</div>
+        <div class="loader-content">
+            <div class="hello-text" id="hello-text">Hello</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="progress-text" id="progress-text">0%</div>
+        </div>
     </div>
 
     <!-- Stage 2: Coming Soon Page -->
@@ -563,15 +604,34 @@
         const helloElement = document.getElementById('hello-text');
         const loader = document.getElementById('loader');
         const mainContent = document.getElementById('main-content');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
 
         let currentIndex = 0;
+        
+        // Setup 4.5 second loading progress animation (giving ~5 seconds total with exit)
+        const loadDuration = 4500; 
+        const startTime = performance.now();
+
+        function updateProgress(currentTime) {
+            const elapsed = currentTime - startTime;
+            let percent = Math.min((elapsed / loadDuration) * 100, 100);
+            
+            progressBar.style.width = percent + '%';
+            progressText.textContent = Math.floor(percent) + '%';
+
+            if (percent < 100) {
+                requestAnimationFrame(updateProgress);
+            }
+        }
+        requestAnimationFrame(updateProgress);
 
         function cycleLanguages() {
             if (currentIndex >= languages.length) {
                 // All languages shown, fade out loader
                 loader.style.opacity = '0';
 
-                // wait for loader to fade out to black (600ms), then fade in main content (800ms)
+                // wait for loader to fade out (600ms), then hide and fade in main content
                 setTimeout(() => {
                     loader.style.visibility = 'hidden';
                     mainContent.classList.add('visible');
@@ -579,23 +639,23 @@
                 return;
             }
 
-            // Set text and fade in (400ms transition)
+            // Set text and fade in (takes 100ms based on CSS transition)
             helloElement.textContent = languages[currentIndex];
             helloElement.classList.add('visible');
 
-            // Wait for fade in (400ms) + hold (300ms) = 700ms total
+            // Wait for fade in (100ms) + hold (100ms) = 200ms total
             setTimeout(() => {
                 // start fade out
                 helloElement.classList.remove('visible');
                 currentIndex++;
 
-                // Wait for fade out to complete (400ms) before showing next word
-                setTimeout(cycleLanguages, 400);
-            }, 700);
+                // Wait for fade out to complete (100ms) before showing next word
+                setTimeout(cycleLanguages, 100);
+            }, 200);
         }
 
-        // Initialize cycle after a short delay
-        setTimeout(cycleLanguages, 200);
+        // Initialize cycle synchronously so it matches progress
+        cycleLanguages();
 
         // Stage 2: Countdown Timer Logic
         // Target: 25th May 2026 00:00:00 IST (UTC+5:30)
