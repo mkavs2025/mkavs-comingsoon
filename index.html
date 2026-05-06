@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MKAVS - Coming Soon</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
     <!-- Preconnect to Google Fonts for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +19,8 @@
             box-sizing: border-box;
         }
 
-        body, html {
+        body,
+        html {
             width: 100%;
             height: 100%;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -115,9 +117,17 @@
         }
 
         @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(50px, 30px) scale(1.1); }
-            100% { transform: translate(-30px, -50px) scale(0.9); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(50px, 30px) scale(1.1);
+            }
+
+            100% {
+                transform: translate(-30px, -50px) scale(0.9);
+            }
         }
 
         /* Content Layout */
@@ -183,7 +193,7 @@
             border-radius: 12px;
             padding: 16px 32px;
             min-width: 140px;
-            box-shadow: 0 0 12px rgba(0,255,150,0.08);
+            box-shadow: 0 0 12px rgba(0, 255, 150, 0.08);
         }
 
         .stat-number {
@@ -268,7 +278,7 @@
             border-radius: 12px;
             padding: 20px;
             min-width: 100px;
-            box-shadow: 0 0 12px rgba(0,255,150,0.08);
+            box-shadow: 0 0 12px rgba(0, 255, 150, 0.08);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -291,14 +301,27 @@
         }
 
         @keyframes pulse-border {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
+            0% {
+                background-position: 0% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
         }
 
         @keyframes sweep {
-            0% { left: -100%; }
-            50% { left: 200%; }
-            100% { left: 200%; }
+            0% {
+                left: -100%;
+            }
+
+            50% {
+                left: 200%;
+            }
+
+            100% {
+                left: 200%;
+            }
         }
 
         /* Footer */
@@ -330,44 +353,139 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hello-text { font-size: 48px; }
-            .headline { font-size: 2.5rem; }
-            .tagline { font-size: 1.2rem; }
-            .brand-logo { height: 20px; }
-            .headline-logo { height: 48px; }
-            .bokeh-1 { width: 300px; height: 300px; filter: blur(60px); }
-            .bokeh-2 { width: 300px; height: 300px; filter: blur(60px); }
-            .bokeh-3 { width: 200px; height: 200px; filter: blur(50px); }
+            .hello-text {
+                font-size: 48px;
+            }
 
-            .stats-container { gap: 16px; }
-            .stat-card { padding: 12px 20px; min-width: 120px; }
-            .stat-number { font-size: 2rem; }
-            .countdown-container { gap: 12px; }
-            .countdown-box { min-width: 80px; padding: 16px; }
-            .count-number { font-size: 2rem; }
+            .headline {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .brand-logo {
+                height: 20px;
+            }
+
+            .headline-logo {
+                height: 48px;
+            }
+
+            .bokeh-1 {
+                width: 300px;
+                height: 300px;
+                filter: blur(60px);
+            }
+
+            .bokeh-2 {
+                width: 300px;
+                height: 300px;
+                filter: blur(60px);
+            }
+
+            .bokeh-3 {
+                width: 200px;
+                height: 200px;
+                filter: blur(50px);
+            }
+
+            .stats-container {
+                gap: 16px;
+            }
+
+            .stat-card {
+                padding: 12px 20px;
+                min-width: 120px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .countdown-container {
+                gap: 12px;
+            }
+
+            .countdown-box {
+                min-width: 80px;
+                padding: 16px;
+            }
+
+            .count-number {
+                font-size: 2rem;
+            }
         }
-        
+
         @media (max-width: 480px) {
-            .hello-text { font-size: 36px; }
-            .headline { font-size: 2rem; }
-            .tagline { font-size: 1rem; }
-            .brand-logo { height: 16px; }
-            .headline-logo { height: 36px; }
-            .badge-inner { padding: 10px 24px; }
-            .badge-text { font-size: 0.85rem; }
+            .hello-text {
+                font-size: 36px;
+            }
 
-            .stats-container { gap: 12px; }
-            .stat-card { padding: 10px 16px; min-width: 100px; }
-            .stat-number { font-size: 1.75rem; }
-            .social-proof-text { font-size: 0.85rem; }
+            .headline {
+                font-size: 2rem;
+            }
 
-            .countdown-container { flex-wrap: wrap; justify-content: center; gap: 10px; }
-            .countdown-box { min-width: 70px; padding: 12px; }
-            .count-number { font-size: 1.5rem; }
-            .count-label { font-size: 0.65rem; }
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .brand-logo {
+                height: 16px;
+            }
+
+            .headline-logo {
+                height: 36px;
+            }
+
+            .badge-inner {
+                padding: 10px 24px;
+            }
+
+            .badge-text {
+                font-size: 0.85rem;
+            }
+
+            .stats-container {
+                gap: 12px;
+            }
+
+            .stat-card {
+                padding: 10px 16px;
+                min-width: 100px;
+            }
+
+            .stat-number {
+                font-size: 1.75rem;
+            }
+
+            .social-proof-text {
+                font-size: 0.85rem;
+            }
+
+            .countdown-container {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .countdown-box {
+                min-width: 70px;
+                padding: 12px;
+            }
+
+            .count-number {
+                font-size: 1.5rem;
+            }
+
+            .count-label {
+                font-size: 0.65rem;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Stage 1: Loading Screen -->
@@ -383,8 +501,8 @@
         <div class="bokeh bokeh-3"></div>
 
         <div class="center-content">
-            <img src="logo.png" alt="MKAVS" class="brand-logo">
-            <h1 class="headline">Thank You for Visiting<br><img src="sidelogo.png" alt="MKAVS" class="headline-logo"></h1>
+            <img src="sidelogo.png" alt="MKAVS" class="brand-logo">
+            <h1 class="headline">Thank You for Visiting<br><img src="logo.png" alt="MKAVS" class="headline-logo"></h1>
             <div class="tagline">We Build Your Digital Superhero</div>
 
             <div class="social-proof">
@@ -398,7 +516,8 @@
                         <div class="stat-label">Projects</div>
                     </div>
                 </div>
-                <div class="social-proof-text">From freelancers to a full-fledged digital platform — the next chapter begins.</div>
+                <div class="social-proof-text">From freelancers to a full-fledged digital platform — the next chapter
+                    begins.</div>
             </div>
 
             <div class="badge-wrapper">
@@ -436,27 +555,27 @@
     <script>
         // Stage 1: Language Cycling Logic
         const languages = [
-            "Hello", "Hola", "Bonjour", "Ciao", "Hallo", 
-            "नमस्ते", "வணக்கம்", "こんにちは", "안녕하세요", 
+            "Hello", "Hola", "Bonjour", "Ciao", "Hallo",
+            "नमस्ते", "வணக்கம்", "こんにちは", "안녕하세요",
             "مرحبا", "Olá", "Привет", "Salam", "Merhaba", "你好"
         ];
 
         const helloElement = document.getElementById('hello-text');
         const loader = document.getElementById('loader');
         const mainContent = document.getElementById('main-content');
-        
+
         let currentIndex = 0;
-        
+
         function cycleLanguages() {
             if (currentIndex >= languages.length) {
                 // All languages shown, fade out loader
                 loader.style.opacity = '0';
-                
+
                 // wait for loader to fade out to black (600ms), then fade in main content (800ms)
                 setTimeout(() => {
                     loader.style.visibility = 'hidden';
                     mainContent.classList.add('visible');
-                }, 600); 
+                }, 600);
                 return;
             }
 
@@ -469,10 +588,10 @@
                 // start fade out
                 helloElement.classList.remove('visible');
                 currentIndex++;
-                
+
                 // Wait for fade out to complete (400ms) before showing next word
-                setTimeout(cycleLanguages, 400); 
-            }, 700); 
+                setTimeout(cycleLanguages, 400);
+            }, 700);
         }
 
         // Initialize cycle after a short delay
@@ -515,4 +634,5 @@
         updateCountdown(); // Initial call
     </script>
 </body>
+
 </html>
